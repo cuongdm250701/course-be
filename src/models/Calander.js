@@ -1,11 +1,10 @@
 const Sequelize = require("sequelize");
-
 const { Model } = Sequelize;
 const sequelize = require(`${__dirname}/../configs/connectDB.js`);
 
-class user extends Model {}
+class calander extends Model {}
 
-user.init(
+calander.init(
   {
     id: {
       type: Sequelize.INTEGER,
@@ -13,31 +12,16 @@ user.init(
       allowNull: false,
       autoIncrement: true,
     },
-    user_name: {
-      type: Sequelize.STRING(50),
-      allowNull: false,
-    },
-    phone: {
-      type: Sequelize.STRING(50),
-      allowNull: false,
-    },
-    full_name: {
-      type: Sequelize.STRING(255),
-      allowNull: false,
-    },
-    password: {
-      type: Sequelize.STRING(100),
-      allowNull: false,
-    },
-    email: Sequelize.STRING(100),
-    address: Sequelize.STRING(100),
-    token: {
-      type: Sequelize.STRING(500),
-      allowNull: false,
-      defaultValue: "",
-    },
-    role_id: {
+    student_id: {
       type: Sequelize.INTEGER,
+      allowNull: false,
+    },
+    content: {
+      type: Sequelize.TEXT,
+      allowNull: false,
+    },
+    appointment_date: {
+      type: Sequelize.DATE,
       allowNull: false,
     },
     is_active: {
@@ -50,13 +34,17 @@ user.init(
       allowNull: false,
       defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
     },
-    profile_image: Sequelize.TEXT,
+    modified_at: {
+      type: Sequelize.DATE,
+      allowNull: true,
+    },
   },
   {
     sequelize,
-    modelName: "user",
+    modelName: "calander",
     timestamps: false,
     freezeTableName: true,
   }
 );
-module.exports = () => user;
+
+module.exports = () => calander;

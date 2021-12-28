@@ -1,11 +1,11 @@
 const Sequelize = require("sequelize");
-
 const { Model } = Sequelize;
+
 const sequelize = require(`${__dirname}/../configs/connectDB.js`);
 
-class user extends Model {}
+class transaction extends Model {}
 
-user.init(
+transaction.init(
   {
     id: {
       type: Sequelize.INTEGER,
@@ -13,32 +13,22 @@ user.init(
       allowNull: false,
       autoIncrement: true,
     },
-    user_name: {
-      type: Sequelize.STRING(50),
-      allowNull: false,
-    },
-    phone: {
-      type: Sequelize.STRING(50),
-      allowNull: false,
-    },
-    full_name: {
-      type: Sequelize.STRING(255),
-      allowNull: false,
-    },
-    password: {
-      type: Sequelize.STRING(100),
-      allowNull: false,
-    },
-    email: Sequelize.STRING(100),
-    address: Sequelize.STRING(100),
-    token: {
-      type: Sequelize.STRING(500),
-      allowNull: false,
-      defaultValue: "",
-    },
-    role_id: {
+    user_manager_id: {
       type: Sequelize.INTEGER,
       allowNull: false,
+    },
+    create_by: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+    },
+    course_id: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+    },
+    status: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+      defaultValue: 1,
     },
     is_active: {
       type: Sequelize.INTEGER,
@@ -50,13 +40,13 @@ user.init(
       allowNull: false,
       defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
     },
-    profile_image: Sequelize.TEXT,
   },
   {
     sequelize,
-    modelName: "user",
+    modelName: "transaction",
     timestamps: false,
     freezeTableName: true,
   }
 );
-module.exports = () => user;
+
+module.exports = () => transaction;
