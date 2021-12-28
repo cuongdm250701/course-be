@@ -1,5 +1,6 @@
 const express = require("express");
 const morgan = require("morgan");
+const sequelize = require("./src/configs/connectDB");
 require("dotenv").config();
 const app = express();
 app.use(morgan);
@@ -23,4 +24,6 @@ app.get("/", (req, res) => {
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
+
 // console.log("process.env:", process.env);
+// hiểu đk env, biết cách connect đến database

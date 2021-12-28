@@ -8,16 +8,23 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "s": "nodemon app.js"
+    "s": "nodemon app.js",
+    "sync": "node ./src/configs/sync.js"
   },
   "dependencies": {
     "dotenv": "^10.0.0",
     "express": "^4.17.2",
+    "fs": "^0.0.1-security",
     "mysql2": "^2.3.3",
     "sequelize": "^6.12.1"
   },
   "devDependencies": {
+    "module-alias": "^2.2.2",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.15"
+  },
+  "_moduleAliases": {
+    "@models": "./src/models",
+    "@configs": "./src/configs"
   }
 }
