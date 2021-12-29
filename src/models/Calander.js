@@ -46,5 +46,12 @@ calander.init(
     freezeTableName: true,
   }
 );
+calander.associate = (db) => {
+  db.calander.belongsTo(db.user, {
+    foreignKey: {
+      name: "student_id",
+    },
+  });
+};
 
 module.exports = () => calander;

@@ -66,4 +66,17 @@ course.init(
   }
 );
 
+course.associate = (db) => {
+  db.course.belongsTo(db.user, {
+    foreignKey: {
+      name: "user_manager_id",
+    },
+  });
+  db.course.hasMany(db.transaction, {
+    foreignKey: {
+      name: "course_id",
+    },
+  });
+};
+
 module.exports = () => course;

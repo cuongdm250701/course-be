@@ -59,4 +59,52 @@ user.init(
     freezeTableName: true,
   }
 );
+
+user.associate = (db) => {
+  db.user.hasOne(db.student, {
+    foreignKey: {
+      name: "student_id",
+    },
+  });
+  db.user.hasMany(db.course, {
+    foreignKey: {
+      name: "user_manager_id",
+    },
+  });
+  db.user.hasMany(db.transaction, {
+    as: "student_transaction",
+    foreignKey: {
+      name: "create_by",
+    },
+  });
+  db.user.hasMany(db.transaction, {
+    as: "user_manager_transaction",
+    foreignKey: {
+      name: "user_manager_id",
+    },
+  });
+  db.user.hasMany(db.complain, {
+    as: "student_complain",
+    foreignKey: {
+      name: "student_id",
+    },
+  });
+  db.user.hasMany(db.complain, {
+    as: "user_manager_complain",
+    foreignKey: {
+      name: "user_manager_id",
+    },
+  });
+  db.user.hasMany(db.calander, {
+    foreignKey: {
+      name: "student_id",
+    },
+  });
+  db.user.belongsTo(db.role, {
+    foreignKey: {
+      name: "role_id",
+    },
+  });
+};
+
 module.exports = () => user;

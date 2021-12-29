@@ -41,5 +41,12 @@ complain.init(
     freezeTableName: true,
   }
 );
+complain.associate = (db) => {
+  db.complain.belongsTo(db.user, {
+    foreignKey: {
+      name: "student_id",
+    },
+  });
+};
 
 module.exports = () => complain;

@@ -33,4 +33,6 @@ student.init(
   }
 );
 
+student.associate = (db) => {};
+
 module.exports = () => student;
