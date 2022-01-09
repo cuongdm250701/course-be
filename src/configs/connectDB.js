@@ -15,6 +15,9 @@ const sequelize = new Sequelize(
       acquire: 30000,
       idle: 10000, // Remove a connection from the pool after the connection has been idle (not been used) for 10 seconds
     },
+    define: {
+      hooks: true,
+    },
   }
 );
 

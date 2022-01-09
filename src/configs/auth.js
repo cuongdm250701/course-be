@@ -8,8 +8,8 @@ function createJWToken(payload) {
     },
     process.env.SECRET,
     {
-      algorithm: "RS256",
-      expiresIn: 100000000,
+      algorithm: "HS256",
+      expiresIn: 10000000000,
     }
   );
 }
